@@ -1,47 +1,55 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('content')
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center mb-4 pb-3 fw-semibold" style="color: #800000">SPPK PEMILIHAN UKM MENGGUNAKAN METODE
+                    VIKOR</h1>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+
+                    <div class="mb-4">
+                        <label class="fw-semibold pb-2" for="nim" class="form-label">{{ __('NIM') }}</label>
+                        <input style="border: 1px solid; " id="nim" type="text" class="form-control @error('nim') is-invalid @enderror"
+                            name="nim" value="{{ old('nim') }}" placeholder="NIM" required>
+                        @error('nim')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-4">
+                        <label class="fw-semibold pb-2" for="password" class="form-label">{{ __('Password') }}</label>
+                        <input style="border: 1px solid;" id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" required autocomplete="current-password" placeholder="Password" required>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <!-- Tombol Login -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn text-white fw-bold" style="background-color: #800000;">
+                            {{ __('LOGIN') }}
+                        </button>
+                    </div>
+                    <!-- Link Daftar -->
+                    <div class="text-center mt-3">
+                        <p class="fw-semibold" >Belum mempunyai akun?  <a href="{{ route('register') }}" style="color: #800000">Daftar sekarang! </a>
+                        </p>
+                    </div>
+
+
+
+                </form>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

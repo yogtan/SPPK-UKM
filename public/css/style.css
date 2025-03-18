@@ -1,0 +1,63 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #FFFFFFFA;
+}
+
+.home-hero {
+    display: flex;
+    background-position: center;
+    min-height: 70vh;
+    /* background-image: url(../img/Herooo.svg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+.home-hero2 {
+    display: flex;
+    background-position: center;
+    min-height: 50vh;
+    /* background-image: url(../img/Herooo.svg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+.navbar {
+    padding: 8px;
+}
+
+.navbar .nav-item {
+    margin: 0px;
+    margin-top: 0px;
+    padding: 0px;
+}
+.navbar-toggler {
+    z-index: 1000; /* Pastikan tombol toggler memiliki indeks z yang lebih tinggi */
+    color: black; /* Atur warna ikon toggler agar tetap terlihat di atas latar belakang putih */
+}
+
+
+.navbar .nav-item .nav-link {
+    margin: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+}
+
+.navbar.transparent {
+    background-color: transparent !important;
+    transition: background-color 0.5s ease-in-out;
+}
+.navbar.white {
+    background-color: white !important;
+    transition: background-color 0.5s ease-in-out;
+}
+.navbar.white .nav-link {
+    color: black !important;
+}
